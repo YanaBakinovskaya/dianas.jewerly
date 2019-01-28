@@ -1,0 +1,21 @@
+.products article img {
+    height: 194px;
+}
+
+.product .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product .image img {
+    max-width: 90%;
+    height: 100%;
+    /* width: 100%; */
+}
+
+.cart-table img {
+    width: 150px;
+    height: 150px;
+    padding-right: 50px;
+}
