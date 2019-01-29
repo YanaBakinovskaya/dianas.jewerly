@@ -1,10 +1,6 @@
-<?php
-$this->title = 'Diana’s jewelry'.' | '.$products[0]['category'];
-?>
-<?=\app\widgets\MenuWidget::widget()?>
-<?
-use yii\helpers\Url;
-?>
+<?php $this->title = 'Diana’s jewelry'.' | '.$products[0]['category']; ?>
+
+<? use yii\helpers\Url; ?>
 
 <div id="breadcrumbs">
   <div class="container">

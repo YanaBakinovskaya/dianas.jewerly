@@ -38,5 +38,6 @@ class Cart extends ActiveRecord
     $_SESSION['cart.totalSum'] -= $price;
     unset($_SESSION['cart'][$id]);
   }
+
 }
 

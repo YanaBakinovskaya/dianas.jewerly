@@ -1,4 +1,4 @@
-<?=\app\widgets\MenuWidget::widget()?>
+
 <?use yii\helpers\Url;?>
 <?php
 $this->title = 'Diana’s jewelry';

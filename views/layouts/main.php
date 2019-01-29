@@ -32,7 +32,7 @@ AppAsset::register($this);
     <a href="/" id="logo" title="<?= Html::encode($this->title) ?>"><?= Html::encode($this->title) ?></a>
     <div class="right-links">
       <ul>
-        <li><a href="<?=Url::to(['cart/index'])?>"><span class="ico-products"></span><small class="menu-quantity"><?=$_SESSION['cart.totalQuantity'] ? $_SESSION['cart.totalQuantity'] : 0?> products, </small><small class="menu-sum">$<?=$_SESSION['cart.totalSum'] ? $_SESSION['cart.totalSum'] : 0 ?></small></a></li>
+        <li><a href="<?=Url::to(['cart/index'])?>"><span class="ico-products"></span><small class="menu-quantity"><?=isset($_SESSION['cart.totalQuantity']) ? $_SESSION['cart.totalQuantity'] : 0?></small> products, $<small class="menu-sum"><?=isset($_SESSION['cart.totalSum']) ? $_SESSION['cart.totalSum'] : 0 ?></small></a></li>
         <li><a href="#"><span class="ico-account"></span>Account</a></li>
         <li><a href="#"><span class="ico-signout"></span>Sign out</a></li>
       </ul>
@@ -42,8 +42,10 @@ AppAsset::register($this);
 </header>
 <!-- / header -->
 
+<?=\app\widgets\MenuWidget::widget()?>
+<div id="wrapper">
 <?= $content ?>
-
+</div>
 <footer id="footer">
   <div class="container">
     <div class="cols">
@@ -86,6 +88,7 @@ AppAsset::register($this);
   <!-- / container -->
 </footer>
 <!-- / footer -->
+
 
 <?php $this->endBody() ?>
 </body>

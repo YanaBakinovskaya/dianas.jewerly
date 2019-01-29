@@ -54,6 +54,8 @@ $config = [
               'category/<id>' => 'category/view',
               'product/<name>' => 'product/index',
               'cart' => 'cart/index',
+
+
             ],
         ],
     ],

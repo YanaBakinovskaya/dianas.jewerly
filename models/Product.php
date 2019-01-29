@@ -34,6 +34,7 @@ class Product extends ActiveRecord
     $catProducts = Yii::$app->cache->get('catProducts');
     if (!$catProducts) {
       $catProducts = Product::find()->where(['category' => $id])->asArray()->all();
+      Yii::$app->cache->set('products', $catProducts, 140);
     };
     return $catProducts;
   }

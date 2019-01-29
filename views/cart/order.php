@@ -1,5 +1,6 @@
 <?php
 use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 ?>
 
 <? $form = ActiveForm::begin() ?>
@@ -7,9 +8,7 @@ use yii\widgets\ActiveForm;
 <?= $form->field($order, 'email') ?>
 <?= $form->field($order, 'phone') ?>
 <?= $form->field($order, 'address') ?>
-
-    <!--  //<button class="btn btn-success">Оформить заказ</button>-->
-  <a href="#" class="btn-grey">Finalize and pay</a>
+<?= Html::submitButton('Finalize and pay', ['class' => 'btn-grey']) ?>
 <?php ActiveForm::end() ?>
 
 

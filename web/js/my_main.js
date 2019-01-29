@@ -3,14 +3,13 @@ $('.btn-add').on('click', function (event) {
     let name = $(this).data('name');
     console.log(name);
 
-
     $.ajax({
         url: '/cart/add',
         data: {name: name},
         type: 'GET',
         success: function () {
             // $('.ico-products').html();
-            $('.menu-quantity').html();
+            $('.menu-quantity').html(+$('.menu-quantity').html() + 1);
             $('.menu-sum').html();
         },
         error: function () {
@@ -19,7 +18,7 @@ $('.btn-add').on('click', function (event) {
     })
 })
 
-$('.delete').on('click', function (event) {
+$('#wrapper').on('click', '.delete', function (event) {
     event.preventDefault();
     let id = $(this).data('id');
     console.log(id);
@@ -27,12 +26,14 @@ $('.delete').on('click', function (event) {
         url: '/cart/delete',
         data: {id: id},
         type: 'GET',
-        success: function () {
-            if ($('.total-quantity').html()) {
-                $('.menu-quantity').html();
+        success: function (res) {
+            $('#wrapper').html(res);
+            if ($('.total-Q').html()) {
+                $test = $('.menu-quantity').html($('.total-Q').html());
+                $sum = $('.menu-sum').html($('.total-S').html());
             } else {
-                $('.menu-quantity').html('(0)');
-                $('.menu-sum').html('(0)');
+                $('.menu-quantity').html('0');
+                $('.menu-sum').html('0');
             }
 
         },
@@ -41,13 +42,14 @@ $('.delete').on('click', function (event) {
         }
     })
 });
-$('.btn-grey').on('click', function (event) {
-    event.preventDefault();
+
+$('.btn-grey').on('click', function () {
     $.ajax({
-        url: '/cart/order',
+        url: '/cart/index',
         type: 'GET',
-        success: function () {
-            alert('success');
+        success: function (res) {
+            console.log(res);
+
         },
         error: function () {
             alert('error');

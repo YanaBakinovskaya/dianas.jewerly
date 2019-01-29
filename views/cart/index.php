@@ -1,35 +1,26 @@
-<?php
-use yii\widgets\ActiveForm;
-use yii\widgets\Pjax;
-?>
+
 <?php
 $this->title = 'Diana’s jewelry'.' | '.'cart';
 ?>
 <?use yii\helpers\Url;
-
-?>
-<?=\app\widgets\MenuWidget::widget()?>
-
-<?// require_once(Yii::app()->basePath . '/views/cart/order.php');?>
-
-<?
-if ($session['cart']) {
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
 ?>
 
-
-<div id="breadcrumbs">
-  <div class="container">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><?='cart'?></li>
-    </ul>
+  <div id="breadcrumbs">
+    <div class="container">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><?='cart'?></li>
+      </ul>
+    </div>
+    <!-- / container -->
   </div>
-  <!-- / container -->
-</div>
-<!-- / body -->
 
+<? if ($session['cart']) { ?>
 
+  <!-- / body -->
 <div id="body">
   <div class="container">
     <div id="content" class="full">
@@ -62,21 +53,35 @@ if ($session['cart']) {
 
       <div class="total-count">
 
-        <h3>Total to pay: <span class="total-quantity"><strong>$<?=$session['cart.totalSum']?></strong></span></h3>
-        <!--        <form action="">-->
-        <!--          <input type="text" name="name" placeholder="Имя">-->
-        <!--        </form>-->
-        <a href="#" class="btn-grey">Finalize and pay</a>
+        <h3>Total to pay: $<span class="total-quantity"><strong><?=$session['cart.totalSum']?></strong></span></h3>
 
-        <!--        --><?// $form = ActiveForm::begin() ?>
-        <!--        --><?//=$form->field($order, 'name')?>
-        <!--        --><?//=$form->field($order, 'email')?>
-        <!--        --><?//=$form->field($order, 'phone')?>
-        <!--        --><?//=$form->field($order, 'address')?>
+        <span style="display: none" class="total-Q"><?=isset($_SESSION['cart.totalQuantity']) ? $_SESSION['cart.totalQuantity'] : 0?></span>
+        <span style="display: none" class="total-S"><?=isset($_SESSION['cart.totalSum']) ? $_SESSION['cart.totalSum'] : 0?></span>
 
-                <!--  //<button class="btn btn-success">Оформить заказ</button>-->
-        <!--        <a href="#" class="btn-grey">Finalize and pay</a>-->
-        <!--        --><?php //ActiveForm::end() ?>
+        <? $form = ActiveForm::begin() ?>
+        <?= $form->field($order, 'name') ?>
+        <?= $form->field($order, 'email') ?>
+        <?= $form->field($order, 'phone') ?>
+        <?= $form->field($order, 'address') ?>
+        <?= Html::submitButton('Finalize and pay', ['class' => 'btn-grey']) ?>
+        <?php ActiveForm::end() ?>
+<!--        --><?//= Html::beginForm(['default/test'], 'post', ['data-pjax' => '', 'class' => 'form-inline']); ?>
+<!--        --><?//= Html::input('text', 'string', Yii::$app->request->post('string'), ['class' => 'form-control']) ?>
+<!--        --><?//= Html::input('text', 'string', Yii::$app->request->post('string'), ['class' => 'form-control']) ?>
+<!--        --><?//= Html::input('text', 'string', Yii::$app->request->post('string'), ['class' => 'form-control']) ?>
+<!--        --><?//= Html::input('text', 'string', Yii::$app->request->post('string'), ['class' => 'form-control']) ?>
+<!---->
+<!--        --><?//= Html::submitButton('Hash String', ['class' => 'btn btn-lg btn-primary', 'name' => 'hash-button']) ?>
+<!--        --><?//= Html::endForm() ?>
+<!--        <form action="" method="POST">-->
+<!--          <input type="text" name="--><?//=$order['name']?><!--" placeholder="name">-->
+<!--          <input type="text" name="--><?//=$order['phone']?><!--" placeholder="phone">-->
+<!--          <input type="text" name="--><?//=$order['address']?><!--" placeholder="address">-->
+<!--          <input type="text" name="--><?//=$order['email']?><!--" placeholder="email">-->
+<!---->
+<!--          <button class="btn-grey">Finalize and pay</button>-->
+<!--        </form>-->
+
 
       </div>
 

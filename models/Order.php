@@ -9,10 +9,17 @@
 namespace app\models;
 
 
-use yii\db\ActiveRecord;
+use Yii;
 
-class Order extends ActiveRecord
+class Order extends \yii\db\ActiveRecord
 {
+
+//  public $name;
+//  public $email;
+//  public $phone;
+//  public $address;
+  //public $sum;
+
   public static function tableName()
   {
     return 'order';
@@ -31,10 +38,10 @@ class Order extends ActiveRecord
   public function attributeLabels()
   {
     return [
-      'name' => 'Имя',
-      'email' => 'E-mail',
-      'phone' => 'Телефон',
-      'address' => 'Адрес',
+      'name' => 'name',
+      'email' => 'email',
+      'phone' => 'phone',
+      'address' => 'address',
     ];
   }
 }
