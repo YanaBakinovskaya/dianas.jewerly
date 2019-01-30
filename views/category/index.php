@@ -34,9 +34,9 @@ $this->title = 'Diana’s jewelry';
       <section class="products">
         <?php foreach ($products as $product) { ?>
         <article>
-          <img src="/images/<?=$product['img']?>" alt="<?=$product['name']?>">
-          <h3><?=$product['name']?></h3>
-          <h4>$<?=$product['price']?></h4>
+          <a href="<?=Url::to(['product/index', 'name'=> $product['link']])?>"><img src="/images/<?=$product['img']?>" alt="<?=$product['name']?>"></a>
+          <h3><a href="<?=Url::to(['product/index', 'name'=> $product['link']])?>"><?=$product['name']?></a></h3>
+          <h4>$<?=number_format($product['price'], 0, '.', ' ')?></h4>
           <a href="#" data-name="<?=$product['link']?>" class="btn-add">Add to cart</a>
         </article>
         <? } ?>

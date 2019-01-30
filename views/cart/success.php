@@ -42,4 +42,4 @@
   $session->remove('cart');
   $session->remove('cart.totalQuantity');
   $session->remove('cart.totalSum');
-  } ?>
+  }  ?>

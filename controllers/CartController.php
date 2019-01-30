@@ -24,9 +24,12 @@ class CartController extends Controller
     $session->open();
     $order = new Order();
     if ($order->load(Yii::$app->request->post())) {
+        
       $order->date = date('Y-m-d H:i:s');
       $order->sum = $session['cart.totalSum'];
+    
       if ($order->save()) {
+        
         $currentID = $order->id;
         $sum = $order->sum;
         $name = $order->name;
@@ -40,6 +43,11 @@ class CartController extends Controller
           ->send();
         return $this->render('success', compact('session', 'currentID', 'sum', 'address', 'phone', 'name', 'email'));
       }
+    //   if (!$session['cart.totalSum']) {
+    //   return Yii::$app->response->redirect(Url::to('/'));
+    //   die();
+    //   }
+      
     }
     return $this->render('index', compact('session', 'order'));
   }
@@ -47,6 +55,10 @@ class CartController extends Controller
   public function actionDelete($id) {
     $session = Yii::$app->session;
     $session->open();
+    if (!$session['cart.totalSum']) {
+      return Yii::$app->response->redirect(Url::to('/'));
+      die();
+    }
     $cart = new Cart();
     $cart->recalcCart($id);
     $order = new Order();
@@ -69,7 +81,7 @@ class CartController extends Controller
       }
     }
     $this->layout = 'empty-layout';
-    return $this->renderPartial('index', compact('session', 'order'));
+    return $this->renderPartial('index', compact('session', 'id', 'order'));
   }
   public function actionAdd($name) {
     $product = new Product();

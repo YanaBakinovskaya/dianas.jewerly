@@ -22,9 +22,7 @@ class Product extends ActiveRecord
   public function getAllProducts() {
     $products = Yii::$app->cache->get('products');
     if (!$products) {
-      $sql = 'SELECT * FROM jewelry.product ORDER BY id DESC LIMIT 1, 10';
-      $products = Product::findbysql($sql)->all();
-      //$products = Product::find()->asArray()->all();
+      $products = Product::find()->asArray()->orderBy(['id'=>SORT_DESC])->limit(10)->all();
       Yii::$app->cache->set('products', $products, 10);
     };
     return $products;

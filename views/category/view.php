@@ -72,7 +72,7 @@
             <article>
               <a href="<?=Url::to(['product/index', 'name'=> $product['link']])?>"><img src="/images/<?=$product['img']?>" alt="<?=$product['name']?>"></a>
               <h3><a href="<?=Url::to(['product/index', 'name'=> $product['link']])?>"><?=$product['name']?></a></h3>
-              <h4><a href="<?=Url::to(['product/index', 'name'=> $product['link']])?>">$<?=$product['price']?></a></h4>
+              <h4><a href="<?=Url::to(['product/index', 'name'=> $product['link']])?>">$<?=number_format($product['price'], 0, '.', ' ')?></a></h4>
               <a href="#" data-name="<?=$product['link']?>" class="btn-add">Add to cart</a>
             </article>
           <? } ?>
